@@ -1,6 +1,6 @@
 <template>
   <div class='layout'>
-    <Rooms class='layout__sidebar'></Rooms>
+    <Rooms :rooms='allRooms' class='layout__sidebar'></Rooms>
     <ChatLayout class='layout__chat'></ChatLayout>
   </div>
 </template>
@@ -8,12 +8,24 @@
 <script>
 import Rooms from '@/components/Rooms.vue'
 import ChatLayout from '@/components/ChatLayout.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     Rooms,
     ChatLayout,
+  },
+  computed: {
+    ...mapGetters([
+      'allRooms',
+    ]),
+  },
+  methods: {
+    ...mapActions([ 'fetchRooms' ]),
+  },
+  mounted() {
+    this.fetchRooms()
   },
 }
 </script>

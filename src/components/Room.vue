@@ -1,12 +1,17 @@
 <template>
   <div class='room'>
-    Room name 👆
+    {{roomName}}
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    roomName: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 

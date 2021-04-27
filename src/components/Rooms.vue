@@ -1,6 +1,8 @@
 <template>
   <div class='room__list'>
-    <Room v-for='i in 10' :key='i' />
+    <template v-if='rooms.length > 1'>
+      <Room :room-name='i' v-for='i in rooms' :key='i' />
+    </template>
   </div>
 </template>
 
@@ -8,13 +10,15 @@
 import Room from './Room.vue'
 
 export default {
+  props: {
+    rooms: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+  },
   components: {
     Room,
-  },
-  methods: {
-    test() {
-      console.log('test')
-    },
   },
 }
 </script>
