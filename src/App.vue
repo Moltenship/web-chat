@@ -1,14 +1,16 @@
 <template>
-  <Layout></Layout>
+  <router-view></router-view>
 </template>
 
 <script>
-import Layout from '@/components/Layout.vue'
-
+import { mapActions } from 'vuex'
 export default {
   name: 'App',
-  components: {
-    Layout,
+  methods: {
+    ...mapActions([ 'loadUsername' ]),
+  },
+  created() {
+    this.loadUsername()
   },
 }
 </script>
