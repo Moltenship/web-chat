@@ -1,17 +1,23 @@
 <template>
-  <div class='room' @click='handleClick'>
+  <div class='room' :class='{"room--isActive": isActive}' @click='handleClick'>
     {{roomName}}
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   props: {
     roomName: {
       type: String,
       default: '',
     },
+  },
+  computed: {
+    ...mapGetters([ 'currentRoom' ]),
+    isActive() {
+      return this.roomName == this.currentRoom
+    }, 
   },
   methods: {
     ...mapActions([ 'selectRoom' ]),
@@ -28,6 +34,9 @@ export default {
   background: aqua;
   &:hover {
     background: red;
+  }
+  &--isActive {
+    background: green;
   }
 }
 </style>

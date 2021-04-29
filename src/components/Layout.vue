@@ -34,13 +34,13 @@ export default {
 .layout {
   display: grid;
   grid-template-columns: 150px 1fr;
-  grid-template-rows: 768px 1fr;
+  grid-template-rows: 1fr 1fr;
   height: 100%;
   &__sidebar {
     grid-row: 1 / -1;
   }
   &__chat {
-
+    grid-row: 1fr;
   }
 }
 

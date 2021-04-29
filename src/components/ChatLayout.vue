@@ -1,14 +1,14 @@
 <template>
-  <div class='chat-layout'>
+  <div class='chat-layout' v-if='currentRoom'>
     <div class='chat'>
       <div v-for='message in chatMessages' :key='message' class='chat__message'>
         {{message.username}}: {{message.message}}
       </div>
     </div>
-    <div class='chat-layout__input'>
+    <form @submit.prevent='handleSubmit' class='chat-layout__input'>
       <input v-model='chatMessage' type='text'>
-      <button @click='handleSubmit'>Send</button>
-    </div>
+      <button>Send</button>
+    </form>
   </div>
 </template>
 
@@ -21,13 +21,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([ 'chatMessages' ]),
+    ...mapGetters([ 'chatMessages', 'currentRoom' ]),
   },
   methods: {
     ...mapActions([ 'addMessage', 'fetchMessages' ]),
     handleSubmit() {
       this.addMessage(this.chatMessage)
-      console.log(this.chatMessages)
       this.chatMessage = ''
     },
   },
@@ -40,7 +39,7 @@ export default {
 <style scoped lang='scss'>
 .chat-layout {
   display: grid;
-  grid-template-rows: 1fr 64px;
+  grid-template-rows: 480px 64px;
   &__input {
     display: flex;
     input {
@@ -50,5 +49,8 @@ export default {
       flex-grow: 1;
     }
   }
+}
+.chat {
+  overflow-y: scroll;
 }
 </style>
