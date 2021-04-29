@@ -1,18 +1,39 @@
 <template>
   <div class='chat-layout'>
     <div class='chat'>
-      test
+      <div v-for='message in chatMessages' :key='message' class='chat__message'>
+        {{message.username}}: {{message.message}}
+      </div>
     </div>
     <div class='chat-layout__input'>
-      <input type='text'>
-      <button>Send</button>
+      <input v-model='chatMessage' type='text'>
+      <button @click='handleSubmit'>Send</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-
+  data() {
+    return {
+      chatMessage: '',
+    }
+  },
+  computed: {
+    ...mapGetters([ 'chatMessages' ]),
+  },
+  methods: {
+    ...mapActions([ 'addMessage', 'fetchMessages' ]),
+    handleSubmit() {
+      this.addMessage(this.chatMessage)
+      console.log(this.chatMessages)
+      this.chatMessage = ''
+    },
+  },
+  created() {
+    this.fetchMessages()
+  },
 }
 </script>
 

@@ -1,7 +1,28 @@
 import { socket } from './index'
 
-export default function getRooms(callback) {
+export function getRooms(commit) {
   socket.on('getRooms', (data) => {
-    callback(data)
+    commit(data)
   })
+}
+
+export function sendMessage(username, message, commit) {
+  socket.emit('message', { username, message })
+  commit({ username, message })
+}
+
+export function getMessage(commit) {
+  socket.on('chatMessage', ({ username, message }) => {
+    commit({ username, message })
+  })
+}
+
+export function joinRoom(room, commit) {
+  socket.emit('joinRoom', room)
+  commit(room)
+}
+
+export function leaveRoom(room, commit) {
+  socket.emit('leaveRoom', room)
+  commit(room)
 }

@@ -1,10 +1,6 @@
 function getUsername() {
   let username = localStorage.getItem('username')
-  if (username) {
-    return username
-  } else {
-    return ''
-  }
+  return username ? username : ''
 }
 
 function setUsername(username) {
