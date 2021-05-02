@@ -1,13 +1,13 @@
 <template>
   <div class='chat-layout' v-if='currentRoom'>
-    <div class='chat'>
+    <div class='chat-layout__chat-window'>
       <div v-for='message in chatMessages' :key='message' class='chat__message'>
         {{message.username}}: {{message.message}}
       </div>
     </div>
-    <form @submit.prevent='handleSubmit' class='chat-layout__input'>
-      <input v-model='chatMessage' type='text'>
-      <button>Send</button>
+    <form @submit.prevent='handleSubmit' class='message-form'>
+      <input class='message-form__input' v-model='chatMessage' type='text'>
+      <button class='message-form__button'>Send</button>
     </form>
   </div>
 </template>
@@ -39,18 +39,19 @@ export default {
 <style scoped lang='scss'>
 .chat-layout {
   display: grid;
-  grid-template-rows: 480px 64px;
-  &__input {
-    display: flex;
-    input {
-      width: 80%;
-    }
-    button {
-      flex-grow: 1;
-    }
+  grid-template-rows: 480px 48px;
+  &__chat-window {
+    overflow-y: scroll;
   }
 }
-.chat {
-  overflow-y: scroll;
+.message-form {
+  display: flex;
+  &__input {
+    width: 80%;
+  }
+  &__button {
+    flex-grow: 1;
+  }
 }
+
 </style>

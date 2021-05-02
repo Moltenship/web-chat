@@ -1,19 +1,19 @@
 <template>
   <div class='layout'>
-    <Rooms :rooms='allRooms' class='layout__sidebar'></Rooms>
+    <RoomList :rooms='allRooms' class='layout__sidebar'></RoomList>
     <ChatLayout class='layout__chat'></ChatLayout>
   </div>
 </template>
 
 <script>
-import Rooms from '@/components/Rooms.vue'
+import RoomList from '@/components/RoomList.vue'
 import ChatLayout from '@/components/ChatLayout.vue'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    Rooms,
+    RoomList,
     ChatLayout,
   },
   computed: {

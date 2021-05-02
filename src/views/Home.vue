@@ -1,13 +1,13 @@
 <template>
-  <Layout></Layout>
+  <HomeLayout></HomeLayout>
 </template>
 
 <script>
-import Layout from '@/components/Layout.vue'
+import HomeLayout from '@/components/HomeLayout.vue'
 
 export default {
   components: {
-    Layout,
+    HomeLayout,
   },
 }
 </script>

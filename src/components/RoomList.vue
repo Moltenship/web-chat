@@ -1,13 +1,13 @@
 <template>
   <div class='room__list'>
     <template v-if='rooms.length > 1'>
-      <Room :room-name='i' v-for='i in rooms' :key='i' />
+      <RoomItem :room-name='i' v-for='i in rooms' :key='i' />
     </template>
   </div>
 </template>
 
 <script>
-import Room from './Room.vue'
+import Room from './RoomItem.vue'
 
 export default {
   props: {
@@ -18,7 +18,7 @@ export default {
     },
   },
   components: {
-    Room,
+    RoomItem,
   },
 }
 </script>
