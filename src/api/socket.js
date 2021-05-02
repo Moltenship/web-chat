@@ -1,6 +1,7 @@
 import { socket } from './index'
 
 export function getRooms(commit) {
+  socket.emit('getRooms')
   socket.on('getRooms', (data) => {
     commit(data)
   })
