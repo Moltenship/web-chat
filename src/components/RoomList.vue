@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Room from './RoomItem.vue'
+import RoomItem from './RoomItem.vue'
 
 export default {
   props: {
