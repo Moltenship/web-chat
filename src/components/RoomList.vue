@@ -28,5 +28,6 @@ export default {
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
+  background: #fafafa;
 }
 </style>
